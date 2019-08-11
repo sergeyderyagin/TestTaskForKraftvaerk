@@ -17,7 +17,7 @@ import java.util.concurrent.TimeUnit;
 
 
 public class TestBase {
-    public WebDriver wd;
+    public static WebDriver wd;
     public final Properties properties = new Properties();
 
     @BeforeClass(alwaysRun = true)
@@ -45,9 +45,5 @@ public class TestBase {
         element.submit();
     }
 
-    public boolean checkLinkFromResults(String findUrl, String position) {
-        WebElement searchResults = wd.findElement(By.className("srg"));
-        List<WebElement> results = searchResults.findElements(By.className("g"));
-        return results.get(Integer.valueOf(position) - 1).findElement(By.className("iUh30")).getText().equals(findUrl);
-    }
+
 }
