@@ -1,9 +1,0 @@
-<?xml version = "1.0" encoding = "UTF-8"?>
-
-<suite name = "Check search results">
-    <test name = "Sample test">
-        <classes>
-            <class name = "com.gmail.sergeyderyagin87.SearchResults" />
-        </classes>
-    </test>
-</suite>
