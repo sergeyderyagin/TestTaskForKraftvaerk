@@ -11,7 +11,6 @@ import org.testng.annotations.BeforeClass;
 import java.io.File;
 import java.io.FileReader;
 import java.io.IOException;
-import java.util.List;
 import java.util.Properties;
 import java.util.concurrent.TimeUnit;
 
@@ -24,7 +23,7 @@ public class TestBase {
     public void setUp()  throws IOException {
         properties.load(new FileReader(new File("src/test/resources/properties")));
         goToSearchPage(properties.getProperty("searchSystemUrl"));
-        makeSearch(properties.getProperty("findUrl"));
+        search(properties.getProperty("findUrl"));
     }
 
     @AfterClass
@@ -32,18 +31,22 @@ public class TestBase {
         wd.quit();
     }
 
-
+    /**
+     * Переход по URL поисковой системы.
+     */
     public void goToSearchPage(String url) {
         wd = new ChromeDriver(new ChromeOptions().addArguments("--start-maximized"));
         wd.manage().timeouts().implicitlyWait(5, TimeUnit.SECONDS);
         wd.get(url);
     }
 
-    public void makeSearch(String request) {
+    /**
+     * Заполнение поисковой формы и выполнение поиска.
+     */
+    public void search(String request) {
         WebElement element = wd.findElement(By.name("q"));
         element.sendKeys(request);
         element.submit();
     }
-
 
 }

@@ -5,11 +5,10 @@ import org.openqa.selenium.WebElement;
 
 import java.util.List;
 
-public class SearchResults  {
+public class SearchResults  extends TestBase {
     public List<WebElement> returnSearchResults() {
 
-        WebElement searchResults = wd.findElement(By.className("srg"));
-        List<WebElement> results = searchResults.findElements(By.className("g"));
-        return results.get(Integer.valueOf(position) - 1).findElement(By.className("iUh30")).getText().equals(findUrl);
+        WebElement searchResults = wd.findElement(By.className("srg")); // Получение блока с результатами поиска, исключая рекламный блок
+        return searchResults.findElements(By.className("g")); // Получение списка элементов из блока с результатами поиска.
     }
 }
