@@ -16,7 +16,7 @@ import java.util.concurrent.TimeUnit;
 
 
 public class TestBase {
-    public static WebDriver wd;
+    public WebDriver wd;
     public final Properties properties = new Properties();
 
     @BeforeClass(alwaysRun = true)
